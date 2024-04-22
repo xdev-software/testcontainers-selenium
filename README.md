@@ -8,7 +8,7 @@ A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testconta
 * It uses [Selenium's video recorder](https://github.com/SeleniumHQ/docker-selenium/blob/trunk/README.md#video-recording)
   * Doesn't require VNC 
     * No VNC Server started in the browser container (unless explicitly stated) → Saves memory
-  * Uses [Selenium's implementation](https://github.com/SeleniumHQ/docker-selenium/tree/trunk/Video) and isn't based on [some python code from 2010](https://www.unixuser.org/~euske/python/vnc2flv/index.html)
+  * Uses [Selenium's implementation](https://github.com/SeleniumHQ/docker-selenium/tree/trunk/Video) and isn't [based](https://github.com/testcontainers/vnc-recorder) on [some python code from 2010](https://pypi.org/project/vnc2flv/#history)
     * Way more customization options for e.g. ``framerate``, ``codec``, ``preset`` ...
     * Uses ``mp4`` as default recording format (wider support in comparison to ``flv``)
     * [Renders while saving the video](https://github.com/SeleniumHQ/docker-selenium/blob/4c572afd1173b5bd49fa2def3b54ea552fccee85/Video/video.sh#L126) (not when finished which takes additional time)
@@ -18,7 +18,7 @@ A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testconta
 * Improve creation of video filenames
 * Removed hard dependency on Selenium-Java.<br/>Only required when using ``CapabilitiesBrowserWebDriverContainer``
 * Everything can be ``@Override``n if required
-* Caches automatic Selenium version detection via classpath
+* Caches "Selenium version detection via classpath" so that it's not invoked everytime you build a new container
 
 ## Installation
 [Installation guide for the latest release](https://github.com/xdev-software/testcontainers-java-selenium/releases/latest#Installation)
