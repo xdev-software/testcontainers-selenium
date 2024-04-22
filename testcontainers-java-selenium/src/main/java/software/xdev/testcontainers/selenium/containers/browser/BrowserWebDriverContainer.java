@@ -48,6 +48,9 @@ import software.xdev.testcontainers.selenium.containers.recorder.RecordingContai
 import software.xdev.testcontainers.selenium.containers.recorder.SeleniumRecordingContainer;
 
 
+/**
+ * A chrome/firefox/custom container based on SeleniumHQ's standalone container sets.
+ */
 @SuppressWarnings({"java:S119", "java:S2160"})
 public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SELF>>
 	extends GenericContainer<SELF>
@@ -308,13 +311,13 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 		// In this case try to look for alternative images
 		try
 		{
-			final Field imageField = GenericContainer.class.getDeclaredField("image");
-			imageField.setAccessible(true);
-			final RemoteDockerImage remoteDockerImage = (RemoteDockerImage)imageField.get(this);
+			final Field fImage = GenericContainer.class.getDeclaredField("image");
+			fImage.setAccessible(true);
+			final RemoteDockerImage remoteDockerImage = (RemoteDockerImage)fImage.get(this);
 			
-			final Method getImageNameMethod = RemoteDockerImage.class.getDeclaredMethod("getImageName");
-			getImageNameMethod.setAccessible(true);
-			final DockerImageName currentImage = (DockerImageName)getImageNameMethod.invoke(remoteDockerImage);
+			final Method mGetImageName = RemoteDockerImage.class.getDeclaredMethod("getImageName");
+			mGetImageName.setAccessible(true);
+			final DockerImageName currentImage = (DockerImageName)mGetImageName.invoke(remoteDockerImage);
 			
 			this.setDockerImageName(WORKING_BROWSER_IMAGES_TRANSLATION.computeIfAbsent(
 				currentImage,
@@ -494,8 +497,8 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	public static class DefaultTestRecordingFileNameFactory implements TestRecordingFileNameFactory
 	{
 		public static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
-		public static final String PASSED = "PASSED";
 		
+		public static final String PASSED = "PASSED";
 		public static final String FAILED = "FAILED";
 		
 		@Override

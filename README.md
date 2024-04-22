@@ -4,10 +4,24 @@
 
 # testcontainers-java-selenium
 
+A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testcontainers.org/modules/webdriver_containers/) with the following improvements:
+* It uses [Selenium's video recorder](https://github.com/SeleniumHQ/docker-selenium/blob/trunk/README.md#video-recording)
+  * Doesn't require VNC 
+    * No VNC Server started in the browser container (unless explicitly stated) → Saves memory
+  * Uses [Selenium's implementation](https://github.com/SeleniumHQ/docker-selenium/tree/trunk/Video) and isn't based on [some python code from 2010](https://www.unixuser.org/~euske/python/vnc2flv/index.html)
+    * Way more customization options for e.g. ``framerate``, ``codec``, ``preset`` ...
+    * Uses ``mp4`` as default recording format (wider support in comparison to ``flv``)
+    * [Renders while saving the video](https://github.com/SeleniumHQ/docker-selenium/blob/4c572afd1173b5bd49fa2def3b54ea552fccee85/Video/video.sh#L126) (not when finished which takes additional time)
+  * Stops the recorder before saving the file so that there is no way that [it runs forever](https://github.com/testcontainers/testcontainers-java/discussions/6229).
+* Automatically tries to select a alternative Selenium version for the docker image if it [doesn't exist](https://github.com/SeleniumHQ/docker-selenium/issues/1979).
+* Added support for [NoVNC](https://github.com/SeleniumHQ/docker-selenium/blob/trunk/README.md#using-your-browser-no-vnc-client-is-needed) so that no dedicated VNC client is required
+* Improve creation of video filenames
+* Removed hard dependency on Selenium-Java.<br/>Only required when using ``CapabilitiesBrowserWebDriverContainer``
+* Everything can be ``@Override``n if required
+* Caches automatic Selenium version detection via classpath
 
 ## Installation
 [Installation guide for the latest release](https://github.com/xdev-software/testcontainers-java-selenium/releases/latest#Installation)
-
 
 ## Support
 If you need support as soon as possible and you can't wait for any pull request, feel free to use [our support](https://xdev.software/en/services/support).
