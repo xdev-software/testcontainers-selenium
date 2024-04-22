@@ -52,11 +52,16 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-remote-driver</artifactId>
-			<!-- Tracing is not needed -->
 			<exclusions>
+				<!-- Tracing is not needed -->
 				<exclusion>
 					<groupId>io.opentelemetry</groupId>
 					<artifactId>*</artifactId>
+				</exclusion>
+				<!-- No unused, beta-grade, RUST blobs -->
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-manager</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -69,11 +74,25 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
+			<exclusions>
+				<!-- No unused, beta-grade, RUST blobs -->
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-manager</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-chrome-driver</artifactId>
+			<exclusions>
+				<!-- No unused, beta-grade, RUST blobs -->
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-manager</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
