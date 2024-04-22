@@ -2,7 +2,7 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/testcontainers-java-selenium/checkBuild.yml?branch=develop)](https://github.com/xdev-software/testcontainers-java-selenium/actions/workflows/checkBuild.yml?query=branch%3Adevelop)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=xdev-software_testcontainers-java-selenium&metric=alert_status)](https://sonarcloud.io/dashboard?id=xdev-software_testcontainers-java-selenium)
 
-# testcontainers-java-selenium
+# <img src="https://raw.githubusercontent.com/SeleniumHQ/seleniumhq.github.io/690acbad7b4bf4656f116274809765db64e6ccf7/website_and_docs/static/images/logos/webdriver.svg" height=24 /> testcontainers-java-selenium
 
 A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testcontainers.org/modules/webdriver_containers/) with the following improvements:
 * It uses [Selenium's video recorder](https://github.com/SeleniumHQ/docker-selenium/blob/trunk/README.md#video-recording)
