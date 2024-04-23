@@ -32,4 +32,4 @@ See the [contributing guide](./CONTRIBUTING.md) for detailed instructions on how
 ## Dependencies and Licenses
 View the [license of the current project](LICENSE) or the [summary including all dependencies](https://xdev-software.github.io/testcontainers-selenium/dependencies)
 
-<sub>Disclaimer: This is not an official Testcontainers/Selenium product and not associated with them</sub>
+<sub>Disclaimer: This is not an official Testcontainers/Selenium product and not associated</sub>
