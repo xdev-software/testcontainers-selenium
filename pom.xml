@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>software.xdev</groupId>
-	<artifactId>testcontainers-java-selenium-root</artifactId>
+	<artifactId>testcontainers-selenium-root</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -15,8 +15,8 @@
 	</organization>
 
 	<modules>
-		<module>testcontainers-java-selenium</module>
-		<module>testcontainers-java-selenium-demo</module>
+		<module>testcontainers-selenium</module>
+		<module>testcontainers-selenium-demo</module>
 	</modules>
 
 	<licenses>
