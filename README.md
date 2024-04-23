@@ -1,8 +1,8 @@
-[![Latest version](https://img.shields.io/maven-central/v/software.xdev/testcontainers-java-selenium?logo=apache%20maven)](https://mvnrepository.com/artifact/software.xdev/testcontainers-java-selenium)
-[![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/testcontainers-java-selenium/checkBuild.yml?branch=develop)](https://github.com/xdev-software/testcontainers-java-selenium/actions/workflows/checkBuild.yml?query=branch%3Adevelop)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=xdev-software_testcontainers-java-selenium&metric=alert_status)](https://sonarcloud.io/dashboard?id=xdev-software_testcontainers-java-selenium)
+[![Latest version](https://img.shields.io/maven-central/v/software.xdev/testcontainers-selenium?logo=apache%20maven)](https://mvnrepository.com/artifact/software.xdev/testcontainers-selenium)
+[![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/testcontainers-selenium/checkBuild.yml?branch=develop)](https://github.com/xdev-software/testcontainers-selenium/actions/workflows/checkBuild.yml?query=branch%3Adevelop)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=xdev-software_testcontainers-selenium&metric=alert_status)](https://sonarcloud.io/dashboard?id=xdev-software_testcontainers-selenium)
 
-# <img src="https://raw.githubusercontent.com/SeleniumHQ/seleniumhq.github.io/690acbad7b4bf4656f116274809765db64e6ccf7/website_and_docs/static/images/logos/webdriver.svg" height=24 /> testcontainers-java-selenium
+# <img src="https://raw.githubusercontent.com/SeleniumHQ/seleniumhq.github.io/690acbad7b4bf4656f116274809765db64e6ccf7/website_and_docs/static/images/logos/webdriver.svg" height=24 /> testcontainers-selenium
 
 A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testcontainers.org/modules/webdriver_containers/) with the following improvements:
 * It uses [Selenium's video recorder](https://github.com/SeleniumHQ/docker-selenium/blob/trunk/README.md#video-recording)
@@ -21,7 +21,7 @@ A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testconta
 * Caches "Selenium version detection via classpath" so that it's not invoked everytime you build a new container
 
 ## Installation
-[Installation guide for the latest release](https://github.com/xdev-software/testcontainers-java-selenium/releases/latest#Installation)
+[Installation guide for the latest release](https://github.com/xdev-software/testcontainers-selenium/releases/latest#Installation)
 
 ## Support
 If you need support as soon as possible and you can't wait for any pull request, feel free to use [our support](https://xdev.software/en/services/support).
@@ -30,6 +30,6 @@ If you need support as soon as possible and you can't wait for any pull request,
 See the [contributing guide](./CONTRIBUTING.md) for detailed instructions on how to get started with our project.
 
 ## Dependencies and Licenses
-View the [license of the current project](LICENSE) or the [summary including all dependencies](https://xdev-software.github.io/testcontainers-java-selenium/dependencies)
+View the [license of the current project](LICENSE) or the [summary including all dependencies](https://xdev-software.github.io/testcontainers-selenium/dependencies)
 
 <sub>Disclaimer: This is not an official Testcontainers/Selenium product and not associated with them</sub>

@@ -5,17 +5,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>software.xdev</groupId>
-	<artifactId>testcontainers-java-selenium</artifactId>
+	<artifactId>testcontainers-selenium</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>testcontainers-java-selenium</name>
-	<description>testcontainers-java-selenium</description>
-	<url>https://github.com/xdev-software/testcontainers-java-selenium</url>
+	<name>testcontainers-selenium</name>
+	<description>testcontainers-selenium</description>
+	<url>https://github.com/xdev-software/testcontainers-selenium</url>
 
 	<scm>
-		<url>https://github.com/xdev-software/testcontainers-java-selenium</url>
-		<connection>scm:git:https://github.com/xdev-software/testcontainers-java-selenium.git</connection>
+		<url>https://github.com/xdev-software/testcontainers-selenium</url>
+		<connection>scm:git:https://github.com/xdev-software/testcontainers-selenium.git</connection>
 	</scm>
 
 	<inceptionYear>2024</inceptionYear>
