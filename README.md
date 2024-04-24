@@ -24,7 +24,7 @@ A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testconta
 Usage is very similar to [Testcontainers default implementation](https://java.testcontainers.org/modules/webdriver_containers/).
 
 Make sure to remove the original Testcontainer Webdrivers dependency to avert any mix ups while using the library.
-For more information take a look at our demo.
+For more information take a look at [our demo](./testcontainers-selenium-demo/src/main/java/software/xdev/Application.java).
 
 ## Installation
 [Installation guide for the latest release](https://github.com/xdev-software/testcontainers-selenium/releases/latest#Installation)
