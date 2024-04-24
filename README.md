@@ -20,6 +20,12 @@ A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testconta
 * Everything can be ``@Override``n if required
 * Caches "Selenium version detection via classpath" so that it's not invoked everytime you build a new container
 
+## Usage
+Usage is very similar to [Testcontainers default implementation](https://java.testcontainers.org/modules/webdriver_containers/).
+
+Make sure to remove the original Testcontainer Webdrivers dependency to avert any mix ups while using the library.
+For more information take a look at our demo.
+
 ## Installation
 [Installation guide for the latest release](https://github.com/xdev-software/testcontainers-selenium/releases/latest#Installation)
 
