@@ -193,7 +193,7 @@ public class SeleniumRecordingContainer extends RecordingContainer<SeleniumRecor
 			+ "."
 			+ Optional.ofNullable(this.videoFileName)
 			.filter(f -> f.contains("."))
-			.map(f -> f.substring(f.lastIndexOf(".") + 1))
+			.map(f -> f.substring(f.lastIndexOf('.') + 1))
 			.orElse(""));
 	}
 	

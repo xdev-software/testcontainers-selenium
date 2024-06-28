@@ -66,7 +66,7 @@ import software.xdev.testcontainers.selenium.containers.recorder.SeleniumRecordi
 /**
  * A chrome/firefox/custom container based on SeleniumHQ's standalone container sets.
  */
-@SuppressWarnings({"java:S119", "java:S2160"})
+@SuppressWarnings({"java:S119", "java:S2160", "PMD.GodClass"})
 public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SELF>>
 	extends GenericContainer<SELF>
 	implements TestLifecycleAware
