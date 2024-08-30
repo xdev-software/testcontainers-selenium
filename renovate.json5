@@ -4,7 +4,7 @@
   "packageRules": [
     {
       "description": "Ignore project internal dependencies",
-      "packagePattern": "^software.xdev:testcontainers-selenium ",
+      "packagePattern": "^software.xdev:testcontainers-selenium",
       "datasources": [
         "maven"
       ],
@@ -21,7 +21,17 @@
       "groupName": "net.sourceforge.pmd"
     },
     {
-      "description": "Group Selenium",
+      "description": "Group org.slf4j",
+      "matchPackagePatterns": [
+        "^org.slf4j"
+      ],
+      "datasources": [
+        "maven"
+      ],
+      "groupName": "org.slf4j"
+    },
+    {
+      "description": "Group org.seleniumhq.selenium",
       "matchPackagePatterns": [
         "^org.seleniumhq.selenium"
       ],
