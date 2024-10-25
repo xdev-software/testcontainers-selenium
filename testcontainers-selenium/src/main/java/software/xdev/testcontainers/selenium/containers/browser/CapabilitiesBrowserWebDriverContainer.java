@@ -37,7 +37,22 @@ public class CapabilitiesBrowserWebDriverContainer<SELF extends CapabilitiesBrow
 	
 	public CapabilitiesBrowserWebDriverContainer(final Capabilities capabilities)
 	{
-		super(getStandardImageForCapabilities(capabilities, SeleniumUtils.getClasspathSeleniumVersion()));
+		this(capabilities, BROWSER_DOCKER_IMAGES);
+	}
+	
+	public CapabilitiesBrowserWebDriverContainer(
+		final Capabilities capabilities,
+		final Map<String, DockerImageName> browserDockerImages)
+	{
+		this(getStandardImageForCapabilities(
+			capabilities,
+			SeleniumUtils.getClasspathSeleniumVersion(),
+			browserDockerImages));
+	}
+	
+	public CapabilitiesBrowserWebDriverContainer(final DockerImageName dockerImageName)
+	{
+		super(dockerImageName);
 		this.waitStrategy = this.getDefaultWaitStrategy();
 	}
 	
@@ -45,7 +60,15 @@ public class CapabilitiesBrowserWebDriverContainer<SELF extends CapabilitiesBrow
 		final Capabilities capabilities,
 		final String seleniumVersion)
 	{
-		return Optional.ofNullable(BROWSER_DOCKER_IMAGES.get(Optional.ofNullable(capabilities)
+		return getStandardImageForCapabilities(capabilities, seleniumVersion, BROWSER_DOCKER_IMAGES);
+	}
+	
+	protected static DockerImageName getStandardImageForCapabilities(
+		final Capabilities capabilities,
+		final String seleniumVersion,
+		final Map<String, DockerImageName> browserDockerImages)
+	{
+		return Optional.ofNullable(browserDockerImages.get(Optional.ofNullable(capabilities)
 				.map(Capabilities::getBrowserName)
 				.orElse(BrowserType.CHROME)))
 			.map(image -> image.withTag(seleniumVersion))
