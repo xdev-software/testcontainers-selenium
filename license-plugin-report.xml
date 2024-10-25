@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<licensePluginReport goal="FORMAT" timestamp="1725003546126">
-    <module artifactId="testcontainers-selenium" groupId="software.xdev" version="1.0.2"/>
+<licensePluginReport goal="FORMAT" timestamp="1729845118721">
+    <module artifactId="testcontainers-selenium" groupId="software.xdev" version="1.1.0"/>
     <files>
         <file path="src/main/java/software/xdev/testcontainers/selenium/containers/browser/BrowserWebDriverContainer.java" result="NOOP"/>
         <file path="src/main/java/software/xdev/testcontainers/selenium/containers/browser/CapabilitiesBrowserWebDriverContainer.java" result="NOOP"/>
