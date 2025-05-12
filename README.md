@@ -15,7 +15,7 @@ A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testconta
   * Stops the recorder before saving the file so that there is no way that [it runs forever](https://github.com/testcontainers/testcontainers-java/discussions/6229).
 * Automatically tries to select a alternative Selenium version for the docker image if it [doesn't exist](https://github.com/SeleniumHQ/docker-selenium/issues/1979).
 * Added support for [NoVNC](https://github.com/SeleniumHQ/docker-selenium/blob/trunk/README.md#using-your-browser-no-vnc-client-is-needed) so that no dedicated VNC client is required
-* Improve creation of video filenames
+* Improved creation of video filenames
 * Removed hard dependency on Selenium-Java.<br/>Only required when using ``CapabilitiesBrowserWebDriverContainer``
 * Everything can be ``@Override``n if required
 * Caches "Selenium version detection via classpath" so that it's not invoked everytime you build a new container

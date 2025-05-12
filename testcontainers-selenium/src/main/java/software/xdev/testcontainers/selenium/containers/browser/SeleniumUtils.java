@@ -37,8 +37,8 @@ public final class SeleniumUtils
 {
 	private static final Logger LOG = LoggerFactory.getLogger(SeleniumUtils.class);
 	
-	// as of 2024-10
-	public static final String DEFAULT_SELENIUM_VERSION = "4.25.0";
+	// as of 2024-11
+	public static final String DEFAULT_SELENIUM_VERSION = "4.26.0";
 	private static String cachedVersion;
 	
 	private SeleniumUtils()
