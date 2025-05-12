@@ -1,5 +1,6 @@
-# 1.1.1
-* Update default Selenium version to ``4.26.0``
+# 1.2.0
+* Remove testcontainer's dependency [onto JUnit 4](https://github.com/xdev-software/testcontainers-junit4-mock/?tab=readme-ov-file)
+* Update default Selenium version to ``4.32.0``
 * Updated dependencies
 
 # 1.1.0
