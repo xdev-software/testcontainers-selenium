@@ -1,3 +1,6 @@
+# 1.2.2
+* [Browser] Improve SHM configuration
+
 # 1.2.1
 * Migrated deployment to _Sonatype Maven Central Portal_ [#155](https://github.com/xdev-software/standard-maven-template/issues/155)
 * Updated dependencies
