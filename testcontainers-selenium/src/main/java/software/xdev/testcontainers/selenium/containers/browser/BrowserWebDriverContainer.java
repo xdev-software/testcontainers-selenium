@@ -89,6 +89,8 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	
 	protected static final String TC_TEMP_DIR_PREFIX = "tc";
 	
+	protected static Boolean currentOsWindows; // You should use the method instead, this might be NULL
+	
 	protected boolean mapTimezoneIntoContainer = true;
 	
 	protected boolean validateImageEnabled = true;
@@ -280,17 +282,31 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	{
 		if(this.getShmSize() == null)
 		{
-			if(Optional.ofNullable(System.getProperty("os.name"))
-				.map(osName -> osName.startsWith("Windows"))
-				.orElse(false))
-			{
-				this.withSharedMemorySize(512 * FileUtils.ONE_MB);
-			}
-			else
+			if(this.shouldDirectMountShm())
 			{
 				this.getBinds().add(new Bind("/dev/shm", new Volume("/dev/shm"), AccessMode.rw));
 			}
+			else
+			{
+				this.withSharedMemorySize(512 * FileUtils.ONE_MB);
+			}
 		}
+	}
+	
+	protected boolean shouldDirectMountShm()
+	{
+		return !isCurrentOsWindows();
+	}
+	
+	protected static boolean isCurrentOsWindows()
+	{
+		if(currentOsWindows == null)
+		{
+			currentOsWindows = Optional.ofNullable(System.getProperty("os.name"))
+				.map(osName -> osName.startsWith("Windows"))
+				.orElse(false);
+		}
+		return !currentOsWindows;
 	}
 	
 	protected void configureVNC()
