@@ -1,3 +1,7 @@
+# 1.2.3
+* Make some constants externally accessible
+* Provide chromium image (Chrome doesn't work on ARM64)
+
 # 1.2.2
 * [Browser] Improve SHM configuration
 

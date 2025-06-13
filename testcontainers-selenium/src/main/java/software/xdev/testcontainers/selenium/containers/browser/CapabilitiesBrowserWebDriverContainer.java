@@ -77,7 +77,7 @@ public class CapabilitiesBrowserWebDriverContainer<SELF extends CapabilitiesBrow
 			));
 	}
 	
-	protected static final class BrowserType
+	public static final class BrowserType
 	{
 		public static final String CHROME = "chrome";
 		public static final String FIREFOX = "firefox";

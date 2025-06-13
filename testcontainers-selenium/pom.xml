@@ -90,7 +90,7 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
-			<version>5.13.0</version>
+			<version>5.13.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -356,7 +356,7 @@
 							<includeTests>true</includeTests>
 							<printFailingErrors>true</printFailingErrors>
 							<rulesets>
-								<ruleset>../.config/pmd/ruleset.xml</ruleset>
+								<ruleset>../.config/pmd/java/ruleset.xml</ruleset>
 							</rulesets>
 						</configuration>
 						<dependencies>
