@@ -73,9 +73,9 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 {
 	protected static final Logger LOG = LoggerFactory.getLogger(BrowserWebDriverContainer.class);
 	
-	protected static final DockerImageName CHROME_IMAGE = DockerImageName.parse("selenium/standalone-chrome");
-	protected static final DockerImageName FIREFOX_IMAGE = DockerImageName.parse("selenium/standalone-firefox");
-	protected static final DockerImageName EDGE_IMAGE = DockerImageName.parse("selenium/standalone-edge");
+	public static final DockerImageName CHROME_IMAGE = DockerImageName.parse("selenium/standalone-chrome");
+	public static final DockerImageName FIREFOX_IMAGE = DockerImageName.parse("selenium/standalone-firefox");
+	public static final DockerImageName EDGE_IMAGE = DockerImageName.parse("selenium/standalone-edge");
 	
 	protected static final Map<DockerImageName, String> WORKING_BROWSER_IMAGES_TRANSLATION =
 		Collections.synchronizedMap(new HashMap<>());

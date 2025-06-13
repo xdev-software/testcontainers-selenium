@@ -1,3 +1,6 @@
+# 1.2.3
+* Make some constants externally accessible
+
 # 1.2.2
 * [Browser] Improve SHM configuration
 
