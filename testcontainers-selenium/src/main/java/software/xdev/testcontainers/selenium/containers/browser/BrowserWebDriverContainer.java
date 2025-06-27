@@ -35,6 +35,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -450,49 +451,55 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	@Override
 	public void afterTest(final TestDescription description, final Optional<Throwable> throwable)
 	{
-		this.retainRecordingIfNeeded(description.getFilesystemFriendlyName(), throwable.isEmpty());
+		this.retainRecordingIfNeeded(description::getFilesystemFriendlyName, throwable.isEmpty());
 	}
 	
-	protected void retainRecordingIfNeeded(final String testName, final boolean succeeded)
+	protected void retainRecordingIfNeeded(final Supplier<String> testNameSupplier, final boolean succeeded)
 	{
+		// Should recording be retained?
 		if(switch(this.recordingMode)
 		{
-			case RECORD_ALL -> true;
-			case RECORD_FAILING -> !succeeded;
-			default -> false;
+			case RECORD_ALL -> false;
+			case RECORD_FAILING -> succeeded;
+			default -> true;
 		})
 		{
-			if(this.beforeRecordingSaveWaitTime != null)
-			{
-				try
-				{
-					Thread.sleep(this.beforeRecordingSaveWaitTime.toMillis());
-				}
-				catch(final InterruptedException e)
-				{
-					Thread.currentThread().interrupt();
-					throw new IllegalStateException("Got interrupted", e);
-				}
-			}
+			return;
+		}
+		
+		if(this.beforeRecordingSaveWaitTime != null)
+		{
 			try
 			{
-				final Path recording = Timeouts.getWithTimeout(
-					(int)this.recordingSaveTimeout.toSeconds(),
-					TimeUnit.SECONDS,
-					() -> this.recordingContainer.saveRecordingToFile(
-						this.recordingDirectory,
-						this.testRecordingFileNameFactory.buildNameWithoutExtension(testName, succeeded))
-				);
-				LOG.info("Screen recordings for test {} will be stored at: {}", testName, recording);
+				Thread.sleep(this.beforeRecordingSaveWaitTime.toMillis());
 			}
-			catch(final org.rnorth.ducttape.TimeoutException te)
+			catch(final InterruptedException e)
 			{
-				LOG.warn("Timed out while saving recording for test {}", testName, te);
+				Thread.currentThread().interrupt();
+				throw new IllegalStateException("Got interrupted", e);
 			}
-			catch(final Exception ex)
-			{
-				LOG.warn("Failed to save recording for test {}", testName, ex);
-			}
+		}
+		
+		// Get testname only when required to improve performance
+		final String testName = testNameSupplier.get();
+		try
+		{
+			final Path recording = Timeouts.getWithTimeout(
+				(int)this.recordingSaveTimeout.toSeconds(),
+				TimeUnit.SECONDS,
+				() -> this.recordingContainer.saveRecordingToFile(
+					this.recordingDirectory,
+					this.testRecordingFileNameFactory.buildNameWithoutExtension(testName, succeeded))
+			);
+			LOG.info("Screen recordings for test {} will be stored at: {}", testName, recording);
+		}
+		catch(final org.rnorth.ducttape.TimeoutException te)
+		{
+			LOG.warn("Timed out while saving recording for test {}", testName, te);
+		}
+		catch(final Exception ex)
+		{
+			LOG.warn("Failed to save recording for test {}", testName, ex);
 		}
 	}
 	
