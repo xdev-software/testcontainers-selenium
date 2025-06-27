@@ -114,6 +114,8 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	protected Path recordingDirectory;
 	protected TestRecordingFileNameFactory testRecordingFileNameFactory = new DefaultTestRecordingFileNameFactory();
 	protected Duration recordingSaveTimeout = Duration.ofMinutes(3);
+	// Ensure that the current frame will be fully recorded (default record FPS = 15 -> 67ms per Frame)
+	protected Duration beforeRecordingSaveWaitTime = Duration.ofMillis(70);
 	
 	public BrowserWebDriverContainer(final String dockerImageName)
 	{
@@ -211,6 +213,13 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 		this.recordingSaveTimeout = recordingSaveTimeout;
 		return this.self();
 	}
+	
+	public SELF withBeforeRecordingSaveWaitTime(final Duration beforeRecordingSaveWaitTime)
+	{
+		this.beforeRecordingSaveWaitTime = beforeRecordingSaveWaitTime;
+		return this.self();
+	}
+	
 	// endregion
 	
 	// endregion
@@ -453,6 +462,18 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 			default -> false;
 		})
 		{
+			if(this.beforeRecordingSaveWaitTime != null)
+			{
+				try
+				{
+					Thread.sleep(this.beforeRecordingSaveWaitTime.toMillis());
+				}
+				catch(final InterruptedException e)
+				{
+					Thread.currentThread().interrupt();
+					throw new IllegalStateException("Got interrupted", e);
+				}
+			}
 			try
 			{
 				final Path recording = Timeouts.getWithTimeout(
