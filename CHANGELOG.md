@@ -1,7 +1,7 @@
 # 1.2.4
 * New option ``beforeRecordingSaveWaitTime`` in ``BrowserWebDriverContainer``
   * If not ``null``: Waits the amount of specified time before saving the recording
-  * This way no frames that may show the problem are accidentally lost
+  * This way no frames showing a test failure might get accidentally lost
   * Default value is set to ``70ms`` which is 1 full frame when recording at the default 15 FPS
 * Only compute name for recording when required
 
