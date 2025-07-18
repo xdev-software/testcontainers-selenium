@@ -1,6 +1,5 @@
 [![Latest version](https://img.shields.io/maven-central/v/software.xdev/testcontainers-selenium?logo=apache%20maven)](https://mvnrepository.com/artifact/software.xdev/testcontainers-selenium)
 [![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/testcontainers-selenium/check-build.yml?branch=develop)](https://github.com/xdev-software/testcontainers-selenium/actions/workflows/check-build.yml?query=branch%3Adevelop)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=xdev-software_testcontainers-selenium&metric=alert_status)](https://sonarcloud.io/dashboard?id=xdev-software_testcontainers-selenium)
 
 # <img src="https://raw.githubusercontent.com/SeleniumHQ/seleniumhq.github.io/690acbad7b4bf4656f116274809765db64e6ccf7/website_and_docs/static/images/logos/webdriver.svg" height=24 /> Selenium/WebDriver re-implementation for Testcontainers Java
 
