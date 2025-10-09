@@ -1,3 +1,7 @@
+# 1.2.5
+* Update default Selenium version to `4.36.0`
+* Updated dependencies
+
 # 1.2.4
 * New option ``beforeRecordingSaveWaitTime`` in ``BrowserWebDriverContainer``
   * If not ``null``: Waits the amount of specified time before saving the recording
