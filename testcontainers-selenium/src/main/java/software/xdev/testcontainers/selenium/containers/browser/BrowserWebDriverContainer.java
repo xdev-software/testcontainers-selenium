@@ -52,7 +52,6 @@ import org.testcontainers.containers.wait.strategy.WaitStrategy;
 import org.testcontainers.images.RemoteDockerImage;
 import org.testcontainers.lifecycle.TestDescription;
 import org.testcontainers.lifecycle.TestLifecycleAware;
-import org.testcontainers.shaded.org.apache.commons.io.FileUtils;
 import org.testcontainers.utility.DockerImageName;
 
 import com.github.dockerjava.api.command.InspectContainerResponse;
@@ -301,7 +300,7 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 			}
 			else
 			{
-				this.withSharedMemorySize(512 * FileUtils.ONE_MB);
+				this.withSharedMemorySize(520_000_000L);
 			}
 		}
 	}
