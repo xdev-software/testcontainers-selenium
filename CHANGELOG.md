@@ -1,3 +1,6 @@
+# 1.3.0
+* Update to Testcontainers v2
+
 # 1.2.5
 * Update default Selenium version to `4.36.0`
 * Updated dependencies
