@@ -48,7 +48,7 @@ jobs:
           ${{ runner.os }}-mvn-build-
 
     - name: Build with Maven
-      run: ./mvnw -B clean package
+      run: ./mvnw -B clean package -P run-integration-tests
 
     - name: Check for uncommited changes
       run: |
@@ -67,13 +67,6 @@ jobs:
           echo "::error::Unstaged changes detected. Locally try running: git clean -ffdx && ./mvnw -B clean package"
           exit 1
         fi
-
-    - name: Upload demo files
-      uses: actions/upload-artifact@v4
-      with:
-        name: demo-files-java-${{ matrix.java }}
-        path: ${{ env.DEMO_MAVEN_MODULE }}/target/${{ env.DEMO_MAVEN_MODULE }}.jar
-        if-no-files-found: error
 
   checkstyle:
     runs-on: ubuntu-latest
