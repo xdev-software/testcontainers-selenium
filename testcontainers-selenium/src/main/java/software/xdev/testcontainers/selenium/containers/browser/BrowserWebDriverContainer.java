@@ -431,8 +431,13 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	{
 		final String baseAddress = this.getNoVncAddressRaw();
 		return baseAddress != null
-			? baseAddress + "?autoconnect=true&password=" + DEFAULT_VNC_PASSWORD
+			? baseAddress + this.getNoVncAutoLoginQueryParameterString()
 			: null;
+	}
+	
+	protected String getNoVncAutoLoginQueryParameterString()
+	{
+		return "?autoconnect=true&password=" + DEFAULT_VNC_PASSWORD;
 	}
 	
 	public String getNoVncAddressRaw()
