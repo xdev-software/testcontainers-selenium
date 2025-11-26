@@ -1,3 +1,7 @@
+# 1.4.0
+* `getNoVncAddress` now returns an auto-login url
+  * The original behavior is still available with `getNoVncAddressRaw`
+
 # 1.3.0
 * Update to Testcontainers v2
 

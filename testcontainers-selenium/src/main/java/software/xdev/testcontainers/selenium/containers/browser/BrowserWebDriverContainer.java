@@ -429,6 +429,19 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	
 	public String getNoVncAddress()
 	{
+		final String baseAddress = this.getNoVncAddressRaw();
+		return baseAddress != null
+			? baseAddress + this.getNoVncAutoLoginQueryParameterString()
+			: null;
+	}
+	
+	protected String getNoVncAutoLoginQueryParameterString()
+	{
+		return "?autoconnect=true&password=" + DEFAULT_VNC_PASSWORD;
+	}
+	
+	public String getNoVncAddressRaw()
+	{
 		return !this.disableVNC && this.enableNoVNC
 			? "http://" + this.getHost() + ":" + this.getMappedPort(NO_VNC_PORT)
 			: null;
