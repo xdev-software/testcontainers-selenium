@@ -94,7 +94,7 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	
 	protected static Boolean currentOsWindows; // You should use the method instead, this might be NULL
 	
-	protected boolean mapTimezoneIntoContainer = false;
+	protected boolean mapTimezoneIntoContainer;
 	
 	protected boolean validateImageEnabled = true;
 	protected Duration validateImageGetTimeout = Duration.ofMinutes(5);
