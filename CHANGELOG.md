@@ -1,3 +1,6 @@
+# 1.5.1
+* Slightly increased default recording save wait time a bit
+
 # 1.5.0
 * No longer map timezone into container by default
   * This should keep tests consistent
