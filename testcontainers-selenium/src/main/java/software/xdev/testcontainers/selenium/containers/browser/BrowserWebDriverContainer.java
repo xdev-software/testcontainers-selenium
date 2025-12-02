@@ -114,8 +114,8 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	protected Path recordingDirectory;
 	protected TestRecordingFileNameFactory testRecordingFileNameFactory = new DefaultTestRecordingFileNameFactory();
 	protected Duration recordingSaveTimeout = Duration.ofMinutes(3);
-	// Ensure that the current frame will be fully recorded (default record FPS = 15 -> 67ms per Frame)
-	protected Duration beforeRecordingSaveWaitTime = Duration.ofMillis(70);
+	// Ensure that the current frame will be fully recorded (default record FPS = 15 -> 67ms per Frame + some buffer)
+	protected Duration beforeRecordingSaveWaitTime = Duration.ofMillis(100);
 	
 	public BrowserWebDriverContainer(final String dockerImageName)
 	{
