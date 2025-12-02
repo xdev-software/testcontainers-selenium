@@ -1,3 +1,7 @@
+# 1.5.0
+* No longer map timezone into container by default
+  * This should keep tests consistent
+
 # 1.4.0
 * `getNoVncAddress` now returns an auto-login url
   * The original behavior is still available with `getNoVncAddressRaw`
