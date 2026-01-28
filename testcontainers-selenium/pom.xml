@@ -70,7 +70,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-api</artifactId>
-			<version>4.39.0</version>
+			<version>4.40.0</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -90,7 +90,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-remote-driver</artifactId>
-			<version>4.39.0</version>
+			<version>4.40.0</version>
 			<scope>test</scope>
 			<exclusions>
 				<!-- Tracing is not needed -->
@@ -108,13 +108,13 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-support</artifactId>
-			<version>4.39.0</version>
+			<version>4.40.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
-			<version>4.39.0</version>
+			<version>4.40.0</version>
 			<scope>test</scope>
 			<exclusions>
 				<!-- No unused, beta-grade, RUST blobs -->
@@ -127,7 +127,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-chrome-driver</artifactId>
-			<version>4.39.0</version>
+			<version>4.40.0</version>
 			<scope>test</scope>
 			<exclusions>
 				<!-- No unused, beta-grade, RUST blobs -->
