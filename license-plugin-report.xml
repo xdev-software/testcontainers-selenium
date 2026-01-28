@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<licensePluginReport goal="FORMAT" timestamp="1769614193827">
+    <module artifactId="testcontainers-selenium" groupId="software.xdev" version="1.5.2"/>
+    <files>
+        <file path="src/main/java/software/xdev/testcontainers/selenium/containers/browser/BrowserWebDriverContainer.java" result="NOOP"/>
+        <file path="src/main/java/software/xdev/testcontainers/selenium/containers/browser/CapabilitiesBrowserWebDriverContainer.java" result="NOOP"/>
+        <file path="src/main/java/software/xdev/testcontainers/selenium/containers/browser/SeleniumUtils.java" result="NOOP"/>
+        <file path="src/main/java/software/xdev/testcontainers/selenium/containers/recorder/RecordingContainer.java" result="NOOP"/>
+        <file path="src/main/java/software/xdev/testcontainers/selenium/containers/recorder/SeleniumRecordingContainer.java" result="NOOP"/>
+        <file path="src/test/java/software/xdev/testcontainers/selenium/SimpleContainerTest.java" result="NOOP"/>
+    </files>
+</licensePluginReport>
