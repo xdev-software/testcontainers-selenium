@@ -1,3 +1,6 @@
+# 1.5.2
+* Updated dependencies
+
 # 1.5.1
 * Slightly increased default recording save wait time a bit
 
