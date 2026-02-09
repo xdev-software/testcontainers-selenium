@@ -6,12 +6,12 @@
 
 	<parent>
 		<groupId>software.xdev</groupId>
-		<artifactId>template-placeholder-root</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<artifactId>testcontainers-selenium-root</artifactId>
+		<version>1.5.3-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>template-placeholder-demo</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<artifactId>testcontainers-selenium-demo</artifactId>
+	<version>1.5.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<organization>
@@ -29,11 +29,75 @@
 		<mainClass>software.xdev.Application</mainClass>
 	</properties>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-dependencies-bom</artifactId>
+				<version>4.40.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>software.xdev</groupId>
-			<artifactId>template-placeholder</artifactId>
+			<artifactId>testcontainers-selenium</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>2.0.17</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<exclusions>
+				<!-- Tracing is not needed -->
+				<exclusion>
+					<groupId>io.opentelemetry</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+				<!-- No unused, beta-grade, RUST blobs -->
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-manager</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<exclusions>
+				<!-- No unused, beta-grade, RUST blobs -->
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-manager</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<exclusions>
+				<!-- No unused, beta-grade, RUST blobs -->
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-manager</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
