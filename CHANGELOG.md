@@ -1,3 +1,7 @@
+# 1.5.3
+* Improve error message when browser name can't be matched
+* Updated dependencies
+
 # 1.5.2
 * Updated dependencies
 
