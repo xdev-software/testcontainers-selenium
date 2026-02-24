@@ -68,12 +68,14 @@ public class CapabilitiesBrowserWebDriverContainer<SELF extends CapabilitiesBrow
 		final String seleniumVersion,
 		final Map<String, DockerImageName> browserDockerImages)
 	{
-		return Optional.ofNullable(browserDockerImages.get(Optional.ofNullable(capabilities)
-				.map(Capabilities::getBrowserName)
-				.orElse(BrowserType.CHROME)))
+		final String browserName = Optional.ofNullable(capabilities)
+			.map(Capabilities::getBrowserName)
+			.orElse(BrowserType.CHROME);
+		return Optional.ofNullable(browserDockerImages.get(browserName))
 			.map(image -> image.withTag(seleniumVersion))
 			.orElseThrow(() -> new UnsupportedOperationException(
-				"Unsupported Browser name; Supported: " + String.join(", ", BROWSER_DOCKER_IMAGES.keySet())
+				"Unsupported Browser name " + browserName + "; "
+					+ "Supported: " + String.join(", ", BROWSER_DOCKER_IMAGES.keySet())
 			));
 	}
 	
