@@ -1,3 +1,11 @@
+# 2.0.0
+_Major version bump due to default video container format change_
+* Pinned recorder container to `selenium/video:ffmpeg-8.0-20260202` because the currently latest version of the container is not shutting down properly
+* Changed default video container format to `mkv`
+  * This format allows to play the videos even when they are incomplete
+* Update default Selenium version to `4.41.0`
+* Updated dependencies
+
 # 1.5.3
 * Improve error message when browser name can't be matched
 * Updated dependencies

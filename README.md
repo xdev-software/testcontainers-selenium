@@ -9,7 +9,7 @@ A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testconta
     * No VNC Server started in the browser container (unless explicitly stated) → Saves memory
   * Uses [Selenium's implementation](https://github.com/SeleniumHQ/docker-selenium/tree/trunk/Video) and isn't [based](https://github.com/testcontainers/vnc-recorder) on [some python code from 2010](https://pypi.org/project/vnc2flv/#history)
     * Way more customization options for e.g. ``framerate``, ``codec``, ``preset`` ...
-    * Uses ``mp4`` as default recording format (wider support in comparison to ``flv``)
+    * Uses ``mkv`` as default recording format (wider support in comparison to ``flv``)
     * [Renders while saving the video](https://github.com/SeleniumHQ/docker-selenium/blob/4c572afd1173b5bd49fa2def3b54ea552fccee85/Video/video.sh#L126) (not when finished which takes additional time)
   * Stops the recorder before saving the file so that there is no way that [it runs forever](https://github.com/testcontainers/testcontainers-java/discussions/6229).
 * Automatically tries to select a alternative Selenium version for the docker image if it [doesn't exist](https://github.com/SeleniumHQ/docker-selenium/issues/1979).
@@ -24,6 +24,13 @@ Usage is very similar to [Testcontainers default implementation](https://java.te
 
 Make sure to remove the original Testcontainer Webdrivers dependency to avert any mix ups while using the library.
 For more information take a look at [our demo](./testcontainers-selenium-demo/src/main/java/software/xdev/Application.java).
+
+### Why are videos recorded as `.mkv` and how can I open them?
+
+In version 2 `.mp4` was replaced with `.mkv` as the default video container format.<br/>
+This was done because `.mp4` requires finalization as otherwise the file/container will be consider corrupt. `.mkv` has no such problems.
+
+[Most video players](https://en.wikipedia.org/wiki/Matroska#Support) (including browsers) can play `.mkv` files out of the box.
 
 ## Installation
 [Installation guide for the latest release](https://github.com/xdev-software/testcontainers-selenium/releases/latest#Installation)
