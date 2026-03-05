@@ -85,7 +85,7 @@ class SimpleContainerTest
 			final String recordedFileName = recorded.getFileName().toString();
 			
 			Assertions.assertAll(
-				() -> Assertions.assertTrue(recordedFileName.endsWith(".mp4")),
+				() -> Assertions.assertTrue(recordedFileName.endsWith(".mkv")),
 				() -> Assertions.assertTrue(recordedFileName.startsWith("PASSED-")),
 				() -> Assertions.assertTrue(Files.size(recorded) > 0));
 		}

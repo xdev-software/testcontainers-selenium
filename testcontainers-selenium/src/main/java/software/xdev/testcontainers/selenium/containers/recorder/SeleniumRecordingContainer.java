@@ -31,7 +31,10 @@ import software.xdev.testcontainers.selenium.containers.browser.BrowserWebDriver
 @SuppressWarnings("java:S2160")
 public class SeleniumRecordingContainer extends RecordingContainer<SeleniumRecordingContainer>
 {
-	public static final DockerImageName DEFAULT_IMAGE = DockerImageName.parse("selenium/video");
+	public static final DockerImageName DEFAULT_IMAGE =
+		// Workaround https://github.com/SeleniumHQ/docker-selenium/issues/3093
+		// As of 2026-03 the latest version of the container is not shutting down properly
+		DockerImageName.parse("selenium/video:ffmpeg-8.0-20260202");
 	
 	// https://github.com/SeleniumHQ/docker-selenium/blob/033f77c02dde9d61d1a4d44be7526ef689244606/Video/Dockerfile#L103-L110
 	public static final String ENV_DISPLAY_CONTAINER_NAME = "DISPLAY_CONTAINER_NAME";
@@ -47,7 +50,7 @@ public class SeleniumRecordingContainer extends RecordingContainer<SeleniumRecor
 	protected String displayContainerName;
 	protected String videoFileName;
 	protected boolean resolutionConfigured;
-	protected String fileExtension = "mp4";
+	protected String fileExtension = "mkv";
 	
 	public SeleniumRecordingContainer(final BrowserWebDriverContainer<?> target)
 	{
