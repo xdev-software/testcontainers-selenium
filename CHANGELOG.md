@@ -1,3 +1,8 @@
+# 2.0.1
+* Unpin recorder image version #268
+* Update default Selenium version to `4.45.0`
+* Updated dependencies
+
 # 2.0.0
 _Major version bump due to default video container format change_
 * Pinned recorder container to `selenium/video:ffmpeg-8.0-20260202` because the currently latest version of the container is not shutting down properly
