@@ -1,3 +1,6 @@
+# 2.0.2
+* Extract wait strategy values into constants
+
 # 2.0.1
 * Unpin recorder image version #268
 * Update default Selenium version to `4.45.0`

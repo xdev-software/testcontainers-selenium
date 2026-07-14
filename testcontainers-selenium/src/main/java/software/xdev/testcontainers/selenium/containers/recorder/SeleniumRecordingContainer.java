@@ -42,6 +42,8 @@ public class SeleniumRecordingContainer extends RecordingContainer<SeleniumRecor
 	public static final String ENV_SE_CODEC = "SE_CODEC";
 	public static final String ENV_SE_PRESET = "SE_PRESET";
 	
+	public static final String LOG_MSG_WAIT_STRATEGY_REGEX = ".*(success: video-ready entered RUNNING state).*\n";
+	
 	protected BrowserWebDriverContainer<?> target;
 	
 	protected String displayContainerName;
@@ -62,7 +64,7 @@ public class SeleniumRecordingContainer extends RecordingContainer<SeleniumRecor
 		this.target = target;
 		
 		this.setWaitStrategy(new LogMessageWaitStrategy()
-			.withRegEx(".*(success: video-ready entered RUNNING state).*\n")
+			.withRegEx(LOG_MSG_WAIT_STRATEGY_REGEX)
 			.withStartupTimeout(Duration.of(60, ChronoUnit.SECONDS)));
 	}
 	
