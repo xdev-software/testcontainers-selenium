@@ -1,5 +1,6 @@
 # 2.0.2
 * Extract wait strategy values into constants
+* Updated dependencies
 
 # 2.0.1
 * Unpin recorder image version #268
