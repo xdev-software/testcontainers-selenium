@@ -80,6 +80,8 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	public static final DockerImageName FIREFOX_IMAGE = DockerImageName.parse("selenium/standalone-firefox");
 	public static final DockerImageName EDGE_IMAGE = DockerImageName.parse("selenium/standalone-edge");
 	
+	public static final String LOG_MSG_WAIT_STRATEGY_REGEX = ".*(Started Selenium Standalone).*\n";
+	
 	protected static final Map<DockerImageName, String> WORKING_BROWSER_IMAGES_TRANSLATION =
 		Collections.synchronizedMap(new HashMap<>());
 	
@@ -132,8 +134,7 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	{
 		return new WaitAllStrategy()
 			.withStrategy(new LogMessageWaitStrategy()
-				.withRegEx(".*(Started Selenium Standalone).*\n")
-				.withStartupTimeout(Duration.of(60, ChronoUnit.SECONDS)))
+				.withRegEx(LOG_MSG_WAIT_STRATEGY_REGEX))
 			.withStrategy(new HostPortWaitStrategy())
 			.withStartupTimeout(Duration.of(60, ChronoUnit.SECONDS));
 	}
