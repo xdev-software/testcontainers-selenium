@@ -1,3 +1,8 @@
+# 2.1.0
+* Rename `SeleniumUtils` to `SeleniumVersionDetector`
+* Update default Selenium version to `4.47.0`
+* Updated dependencies
+
 # 2.0.2
 * Extract wait strategy values into constants
 * Updated dependencies
