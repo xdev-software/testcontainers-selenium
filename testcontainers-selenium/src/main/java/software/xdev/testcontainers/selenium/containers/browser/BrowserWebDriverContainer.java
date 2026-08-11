@@ -16,8 +16,6 @@
 package software.xdev.testcontainers.selenium.containers.browser;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,12 +25,11 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -82,8 +79,7 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	
 	public static final String LOG_MSG_WAIT_STRATEGY_REGEX = ".*(Started Selenium Standalone).*\n";
 	
-	protected static final Map<DockerImageName, String> WORKING_BROWSER_IMAGES_TRANSLATION =
-		Collections.synchronizedMap(new HashMap<>());
+	protected static final Map<DockerImageName, String> WORKING_BROWSER_IMAGES_TRANSLATION = new ConcurrentHashMap<>();
 	
 	public static final int SELENIUM_PORT = 4444;
 	public static final int VNC_PORT = 5900;
@@ -341,7 +337,6 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	}
 	
 	// region Validate image
-	// If testcontainers could implement the same method better or made stuff protected we wouldn't need reflection
 	@SuppressWarnings("java:S3011")
 	protected void validateImage()
 	{
@@ -355,16 +350,8 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 		// In this case try to look for alternative images
 		try
 		{
-			final Field fImage = GenericContainer.class.getDeclaredField("image");
-			fImage.setAccessible(true);
-			final RemoteDockerImage remoteDockerImage = (RemoteDockerImage)fImage.get(this);
-			
-			final Method mGetImageName = RemoteDockerImage.class.getDeclaredMethod("getImageName");
-			mGetImageName.setAccessible(true);
-			final DockerImageName currentImage = (DockerImageName)mGetImageName.invoke(remoteDockerImage);
-			
 			this.setDockerImageName(WORKING_BROWSER_IMAGES_TRANSLATION.computeIfAbsent(
-				currentImage,
+				GenericContainerImageNameAccessor.getImageName(this),
 				this::validateImageOrPickAlternative));
 		}
 		catch(final Exception ex)

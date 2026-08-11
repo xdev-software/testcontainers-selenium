@@ -1,5 +1,6 @@
 # 2.1.0
 * Rename `SeleniumUtils` to `SeleniumVersionDetector`
+* Extract image name extraction logic
 * Update default Selenium version to `4.47.0`
 * Updated dependencies
 
