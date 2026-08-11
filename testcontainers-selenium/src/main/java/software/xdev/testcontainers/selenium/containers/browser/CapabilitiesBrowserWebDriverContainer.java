@@ -46,7 +46,7 @@ public class CapabilitiesBrowserWebDriverContainer<SELF extends CapabilitiesBrow
 	{
 		this(getStandardImageForCapabilities(
 			capabilities,
-			SeleniumUtils.getClasspathSeleniumVersion(),
+			SeleniumVersionDetector.getClasspathSeleniumVersion(),
 			browserDockerImages));
 	}
 	

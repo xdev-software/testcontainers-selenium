@@ -33,22 +33,34 @@ jobs:
     steps:
     - uses: actions/checkout@v7
 
-    - name: Set up JDK
-      uses: actions/setup-java@v5
-      with:
-        distribution: ${{ matrix.distribution }}
-        java-version: ${{ matrix.java }}
+    - parallel:
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          distribution: ${{ matrix.distribution }}
+          java-version: ${{ matrix.java }}
 
-    - name: Cache Maven
-      uses: actions/cache@v6
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-mvn-build-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-mvn-build-
+      - name: Cache Maven
+        uses: actions/cache@v6
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-mvn-build-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-mvn-build-
+
+      - name: Docker Image Cache Restore
+        id: docker-image-cache-restore
+        uses: xdev-software/tci/.github/actions/docker-image-cache/restore@f686d444930db567aae0cbc8076694f8c886f479 # v4.1.0
+        with:
+          # This cache could always change however because docker images can be changed remotely if the version is not fixated
+          # As a compromise it utilizes the hash of the pom files because when the dependencies stay the same 
+          # the images should also be roughly the same
+          key: ${{ runner.os }}-check-build-docker-images-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-check-build-docker-images-
 
     - name: Build with Maven
-      run: ./mvnw -B clean package -P run-integration-tests
+      run: ./mvnw -B clean package -P run-integration-tests -D checks.disable=true
 
     - name: Check for uncommited changes
       run: |
@@ -67,6 +79,12 @@ jobs:
           echo "::error::Unstaged changes detected. Locally try running: git clean -ffdx && ./mvnw -B clean package"
           exit 1
         fi
+
+    - name: Docker Image Cache Save
+      uses: xdev-software/tci/.github/actions/docker-image-cache/save@f686d444930db567aae0cbc8076694f8c886f479 # v4.1.0
+      with:
+        key: ${{ steps.docker-image-cache-restore.outputs.key }}
+        cache-hit: ${{ steps.docker-image-cache-restore.outputs.cache-hit }}
 
   checkstyle:
     runs-on: ubuntu-latest
