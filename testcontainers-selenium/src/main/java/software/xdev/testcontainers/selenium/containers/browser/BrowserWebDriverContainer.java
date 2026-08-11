@@ -133,9 +133,9 @@ public class BrowserWebDriverContainer<SELF extends BrowserWebDriverContainer<SE
 	protected WaitStrategy getDefaultWaitStrategy()
 	{
 		return new WaitAllStrategy()
+			.withStrategy(new HostPortWaitStrategy())
 			.withStrategy(new LogMessageWaitStrategy()
 				.withRegEx(LOG_MSG_WAIT_STRATEGY_REGEX))
-			.withStrategy(new HostPortWaitStrategy())
 			.withStartupTimeout(Duration.of(60, ChronoUnit.SECONDS));
 	}
 	
