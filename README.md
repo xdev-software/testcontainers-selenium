@@ -9,7 +9,9 @@ A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testconta
     * No VNC Server started in the browser container (unless explicitly stated) → Saves memory
   * Uses [Selenium's implementation](https://github.com/SeleniumHQ/docker-selenium/tree/trunk/Video) and isn't [based](https://github.com/testcontainers/vnc-recorder) on [some python code from 2010](https://pypi.org/project/vnc2flv/#history)
     * Way more customization options for e.g. ``framerate``, ``codec``, ``preset`` ...
-    * Uses ``mkv`` as default recording format (wider support in comparison to ``flv``)
+    * Uses `mkv` as default recording format
+      * wider support in comparison to `flv`
+      * `mkv` allows incomplete recordings without file corruption
     * [Renders while saving the video](https://github.com/SeleniumHQ/docker-selenium/blob/4c572afd1173b5bd49fa2def3b54ea552fccee85/Video/video.sh#L126) (not when finished which takes additional time)
   * Stops the recorder before saving the file so that there is no way that [it runs forever](https://github.com/testcontainers/testcontainers-java/discussions/6229).
 * Automatically tries to select a alternative Selenium version for the docker image if it [doesn't exist](https://github.com/SeleniumHQ/docker-selenium/issues/1979).
