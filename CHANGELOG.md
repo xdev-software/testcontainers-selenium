@@ -1,3 +1,6 @@
+# 2.1.1
+* Version detection: Use Selenium's `BuildInfo` when available
+
 # 2.1.0
 * Rename `SeleniumUtils` to `SeleniumVersionDetector`
 * Extract image name extraction logic
