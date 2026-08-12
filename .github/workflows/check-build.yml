@@ -82,6 +82,8 @@ jobs:
 
     - name: Docker Image Cache Save
       uses: xdev-software/tci/.github/actions/docker-image-cache/save@5726976f1afd621ab01091ec6b0d7966bd4bb247 # v4.2.0
+      # Only save cache for one instance, otherwise they try to overwrite each other
+      if: ${{ matrix.java == 25 }}
       with:
         key: ${{ steps.docker-image-cache-restore.outputs.key }}
         cache-hit: ${{ steps.docker-image-cache-restore.outputs.cache-hit }}
