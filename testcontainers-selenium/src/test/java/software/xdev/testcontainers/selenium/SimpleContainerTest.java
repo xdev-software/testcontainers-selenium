@@ -59,7 +59,8 @@ class SimpleContainerTest
 				new RemoteWebDriver(browserContainer.getSeleniumAddressURI().toURL(), capabilities, false);
 			
 			remoteWebDriver.manage().window().maximize();
-			remoteWebDriver.get(capabilities instanceof FirefoxOptions ? "about:support" : "chrome://version");
+			// Query file due to https://github.com/SeleniumHQ/selenium/issues/17905
+			remoteWebDriver.get("file:///proc/cpuinfo");
 			remoteWebDriver.findElements(By.tagName("body"));
 			
 			remoteWebDriver.quit();

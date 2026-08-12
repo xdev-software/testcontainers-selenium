@@ -16,6 +16,7 @@
 package software.xdev.testcontainers.selenium.containers.browser;
 
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -61,6 +62,15 @@ public final class SeleniumVersionDetector
 		if(cachedVersion != null)
 		{
 			return cachedVersion;
+		}
+		
+		try
+		{
+			return determineVersionUsingSeleniumBuildInfo();
+		}
+		catch(final Exception ex)
+		{
+			LOG.debug("Resolution using Selenium's built in BuildInfo failed, falling back to manifest", ex);
 		}
 		
 		final Set<String> seleniumVersions = new HashSet<>();
@@ -110,6 +120,23 @@ public final class SeleniumVersionDetector
 		}
 		
 		return foundVersion;
+	}
+	
+	@SuppressWarnings("java:S112")
+	public static String determineVersionUsingSeleniumBuildInfo() throws Exception
+	{
+		final Class<?> buildInfoCl = Class.forName("org.openqa.selenium.BuildInfo");
+		final Method mGetReleaseLabel = buildInfoCl.getDeclaredMethod("getReleaseLabel");
+		final Object instance = buildInfoCl.getDeclaredConstructor().newInstance();
+		
+		final String version = (String)mGetReleaseLabel.invoke(instance);
+		if(version == null || version.isEmpty() || "unknown".equals(version))
+		{
+			throw new IllegalStateException("Invalid version returned " + version);
+		}
+		
+		LOG.info("Selenium API version {} detected using Selenium BuildInfo", version);
+		return version;
 	}
 	
 	/**
