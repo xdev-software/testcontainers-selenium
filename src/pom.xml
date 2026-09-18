@@ -145,7 +145,6 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>flatten-maven-plugin</artifactId>
-						<inherited>false</inherited>
 						<configuration>
 							<skip>true</skip>
 						</configuration>
@@ -154,7 +153,6 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<inherited>false</inherited>
 						<configuration>
 							<skip>true</skip>
 						</configuration>
@@ -162,7 +160,6 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<inherited>false</inherited>
 						<configuration>
 							<skipSource>true</skipSource>
 						</configuration>
@@ -170,14 +167,12 @@
 
 					<plugin>
 						<artifactId>maven-install-plugin</artifactId>
-						<inherited>false</inherited>
 						<configuration>
 							<skip>true</skip>
 						</configuration>
 					</plugin>
 					<plugin>
 						<artifactId>maven-deploy-plugin</artifactId>
-						<inherited>false</inherited>
 						<configuration>
 							<skip>true</skip>
 						</configuration>
@@ -186,7 +181,6 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<inherited>false</inherited>
 						<configuration>
 							<skip>true</skip>
 						</configuration>
@@ -194,7 +188,6 @@
 					<plugin>
 						<groupId>org.sonatype.central</groupId>
 						<artifactId>central-publishing-maven-plugin</artifactId>
-						<inherited>false</inherited>
 						<configuration>
 							<skipPublishing>true</skipPublishing>
 						</configuration>
@@ -271,6 +264,13 @@
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+		<profile>
+			<id>site</id>
+			<properties>
+				<license.skip>true</license.skip>
+				<skipTests>true</skipTests>
+			</properties>
 		</profile>
 	</profiles>
 </project>
