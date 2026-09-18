@@ -19,9 +19,6 @@ on:
       - '.idea/**'
       - 'assets/**'
 
-env:
-  DEMO_MAVEN_MODULE: ${{ github.event.repository.name }}-demo
-
 jobs:
   build:
     runs-on: ubuntu-latest
