@@ -203,9 +203,16 @@
 			</build>
 		</profile>
 		<profile>
+			<id>pmd</id>
+			<properties>
+				<license.skip>true</license.skip>
+			</properties>
+		</profile>
+		<profile>
 			<id>publish</id>
 			<properties>
 				<license.skip>true</license.skip>
+				<skipTests>true</skipTests>
 			</properties>
 			<build>
 				<plugins>
