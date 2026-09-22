@@ -14,7 +14,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>template-placeholder</module>
+		<module>testcontainers-selenium</module>
 	</modules>
 
 	<build>
