@@ -38,7 +38,8 @@ public final class Application
 				
 				remoteWebDriver.manage().window().maximize();
 				
-				remoteWebDriver.get(capabilities instanceof FirefoxOptions ? "about:support" : "chrome://version");
+				// Query file due to https://github.com/SeleniumHQ/selenium/issues/17905
+				remoteWebDriver.get("file:///proc/cpuinfo");
 				Thread.sleep(1000); // Simulate Test work
 				remoteWebDriver.findElements(By.tagName("body"));
 				
