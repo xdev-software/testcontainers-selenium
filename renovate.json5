@@ -15,7 +15,7 @@
     {
       "description": "Ignore project internal dependencies",
       "matchPackagePatterns": [
-        "^software.xdev.*:template-placeholder",
+        "^software.xdev.*:testcontainers-selenium",
         "^software.xdev.*:demos",
         "^software.xdev.*:src",
         "^software.xdev.*:root"
@@ -34,6 +34,26 @@
         "maven"
       ],
       "groupName": "net.sourceforge.pmd"
+    },
+    {
+      "description": "Group org.slf4j",
+      "matchPackagePatterns": [
+        "^org.slf4j"
+      ],
+      "datasources": [
+        "maven"
+      ],
+      "groupName": "org.slf4j"
+    },
+    {
+      "description": "Group org.seleniumhq.selenium",
+      "matchPackagePatterns": [
+        "^org.seleniumhq.selenium"
+      ],
+      "datasources": [
+        "maven"
+      ],
+      "groupName": "org.seleniumhq.selenium"
     }
   ]
 }
