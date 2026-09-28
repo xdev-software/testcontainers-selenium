@@ -25,7 +25,7 @@ A re-implementation of [Testcontainer Selenium/WebDriver](https://java.testconta
 Usage is very similar to [Testcontainers default implementation](https://java.testcontainers.org/modules/webdriver_containers/).
 
 Make sure to remove the original Testcontainer Webdrivers dependency to avert any mix ups while using the library.
-For more information take a look at [our demo](./demo/testcontainers-selenium-demo/src/main/java/software/xdev/Application.java).
+For more information take a look at [our demo](./demos/testcontainers-selenium-demo/src/main/java/software/xdev/Application.java).
 
 ### Why are videos recorded as `.mkv` and how can I open them?
 
